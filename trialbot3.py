@@ -31,10 +31,10 @@ async def start_handler(message: types.Message):
     await bot.send_message(chat_id=chat_id, text=f"Hello, {message.chat.first_name}!")
     await message.reply("Welcome to The EveryDay Market.", reply_markup=keyboardinline)
 
-@dp.message_handler(commands=['stop'])
-async def stop_bot(message: types.Message):
-    # stop the long-polling mechanism
-    await dp.stop_polling()
+# @dp.message_handler(commands=['stop'])
+# async def stop_bot(message: types.Message):
+#     # stop the long-polling mechanism
+#     await dp.stop_polling()
 
 @dp.callback_query_handler(text=["Inventory"])
 async def inventoryfunction(call: types.CallbackQuery):
