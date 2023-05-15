@@ -4,7 +4,8 @@ from aiogram.types import InlineKeyboardMarkup,InlineKeyboardButton
 from random import randint
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
-API_TOKEN = '5943420461:AAEkeVh6Y-B4tT9WOvEAPhBTiBbIMNe62co'
+API_TOKEN ='6076013457:AAHNcMdefmfJyq49hKwdZ-nH2t5LUXZhsV0'
+# API_TOKEN = '5943420461:AAEkeVh6Y-B4tT9WOvEAPhBTiBbIMNe62co'
 Admin_chat_id="711477359"
 bot = Bot(token=API_TOKEN)
 storage = MemoryStorage()
@@ -29,6 +30,11 @@ async def start_handler(message: types.Message):
     # Send a greeting message
     await bot.send_message(chat_id=chat_id, text=f"Hello, {message.chat.first_name}!")
     await message.reply("Welcome to The EveryDay Market.", reply_markup=keyboardinline)
+
+@dp.message_handler(commands=['stop'])
+async def stop_bot(message: types.Message):
+    # stop the long-polling mechanism
+    await dp.stop_polling()
 
 @dp.callback_query_handler(text=["Inventory"])
 async def inventoryfunction(call: types.CallbackQuery):
